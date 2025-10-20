@@ -1,5 +1,5 @@
 #! /bin/bash/
 
-Date=${date}
+Date=$(date)
 
 echo "time stamp executed : $Date"
