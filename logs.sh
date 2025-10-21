@@ -8,6 +8,7 @@ N="\e[0m"
 logsfolder="/var/log/shellscript"
 scriptname=$( echo $0 | cut -d "." -f1 ) #this will cut the file extension
 logfile="$logsfolder/$scriptname.log"
+append=$( $R tee -a $logfile $N )
 
 mkdir -p $logsfolder
 echo "script started executed at: $(date)"
@@ -34,7 +35,7 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y &>>$logfile
     validate $? "Mysql"
 else
-    echo -e "Mysql already exist....$Y Skipping $N" | "$R tee -a $logfile $N"
+    echo -e "Mysql already exist....$Y Skipping $N" | $append
 fi 
 
 dnf list installed nginx &>>$logfile
