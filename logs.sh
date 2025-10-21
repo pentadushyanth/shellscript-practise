@@ -21,10 +21,10 @@ fi
 
 validate(){ #functions recieve inputs through args just like shell script args
 if [ $1 -ne 0 ]; then
-    echo -e " Error:: Installing $2 .....$R failure $N" | tee -a $logfile # this will append this statement in the log file 
+    echo -e " Error:: Installing $2 .....$R failure $N" | "$R tee -a $logfile $N" # this will append this statement in the log file 
     exit 2
 else
-    echo -e " installing $2.....$G is success $N" | tee -a $logfile
+    echo -e " installing $2.....$G is success $N" | "$R tee -a $logfile $N"
 fi
 
 }
@@ -34,7 +34,7 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y &>>$logfile
     validate $? "Mysql"
 else
-    echo -e "Mysql already exist....$Y Skipping $N" | tee -a $logfile
+    echo -e "Mysql already exist....$Y Skipping $N" | "$R tee -a $logfile $N"
 fi 
 
 dnf list installed nginx &>>$logfile
@@ -42,7 +42,7 @@ if [ $? -ne 0 ]; then
     dnf install nginx -y &>>$logfile
     validate $? "nginx"
 else
-    echo -e "nginx already exist....$Y Skipping $N" | tee -a $logfile
+    echo -e "nginx already exist....$Y Skipping $N" | "$R tee -a $logfile $N"
 fi 
 
 dnf list installed python3 &>>$logfile
@@ -50,7 +50,7 @@ if [ $? -ne 0 ]; then
     dnf install python3 -y &>>$logfile
     validate $? "python3"
 else
-    echo -e "python3 already exist....$Y Skipping $N" | tee -a $logfile
+    echo -e "python3 already exist....$Y Skipping $N" | "$R tee -a $logfile $N"
 fi 
 
 
