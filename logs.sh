@@ -8,7 +8,7 @@ N="\e[0m"
 logsfolder="/var/log/shellscript"
 scriptname=$( echo $0 | cut -d "." -f1 ) #this will cut the file extension
 logfile="$logsfolder/$scriptname.log"
-append=$( "$R tee -a $logfile $N" )
+append=$( -e "$R tee -a $logfile $N" )
 
 mkdir -p $logsfolder
 echo "script started executed at: $(date)"
