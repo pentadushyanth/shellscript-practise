@@ -15,7 +15,7 @@ else
     echo " installing $2 is success"
     echo "please enter tool name"
     read tool
-    if [ $tool -ne 0 ]; then
+    if [ $tool -ne $Word ]; then
         dnf install $tool -y
         validate $? "$tool"
     else 
@@ -25,6 +25,8 @@ else
 fi
 
 }
+
+Word=""
 
 echo "please enter tool name"
 read tool
