@@ -24,7 +24,7 @@ fi
 }
 
 dnf list installed mysql
-if[ $? -ne 0 ]; then
+if [ $? -ne 0 ]; then
     dnf install mysql -y
     validate $? "Mysql"
 else
@@ -32,7 +32,7 @@ else
 fi 
 
 dnf list installed nginx
-if[ $? -ne 0 ]; then
+if [ $? -ne 0 ]; then
     dnf install nginx -y
     validate $? "nginx"
 else
@@ -40,7 +40,7 @@ else
 fi 
 
 dnf list installed python3
-if[ $? -ne 0 ]; then
+if [ $? -ne 0 ]; then
     dnf install python3 -y
     validate $? "python3"
 else
