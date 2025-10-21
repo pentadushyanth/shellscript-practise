@@ -13,15 +13,22 @@ if [ $1 -ne 0 ]; then
     exit 2
 else
     echo " installing $2 is success"
+    echo "please enter tool name"
+    read tool
+    if [ $tool -ne 0]; then
+        dnf install $tool -y
+        validate $? "$tool"
+    else 
+        exit 3
+    fi        
+
 fi
 
 }
-dnf install mysql -y
-validate $? "Mysql"
 
-dnf install nginx -y
-validate $? "nginx"
+echo "please enter tool name"
+read tool
 
+dnf install $tool  -y
+validate $? "$tool"
 
-dnf install python3 -y
-validate $? "python3"
