@@ -1,12 +1,12 @@
 #! bin/bash
 
-ami-id = "ami-09c813fb71547fc4f"
-sg-id = "sg-055d475babe24887e"
+ami_id="ami-09c813fb71547fc4f"
+sg_id="sg-055d475babe24887e"
 
 for instance  in $@
 do 
-    Instance_ID=$(aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type t2.micro  \
-    --security-group-ids sg-055d475babe24887e --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" \
+    Instance_ID=$(aws ec2 run-instances --image-id $ami_id  --instance-type t2.micro  \
+    --security-group-ids $sg_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" \
     --query 'Instances[0].InstanceId' --output text)
   if [ $instance != "frontend" ]; then
     IP=$(aws ec2 describe-instances \
