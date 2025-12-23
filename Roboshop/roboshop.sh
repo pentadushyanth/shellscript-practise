@@ -20,6 +20,6 @@ do
     --output text)
   fi
 
-  echo $instance instance $IP
+  echo "$instance instance $IP"
 done
  
