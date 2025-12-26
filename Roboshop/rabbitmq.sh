@@ -43,8 +43,6 @@ rabbitmqctl add_user roboshop roboshop123
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
 VALIDATE $? "adding user"
 
-systemctl restart rabbitmq
-VALIDATE $? "Restarted Mongodb"
 
 End_Time=$(date +%s)
 total_time=$(( $End_Time - $Start_time))
