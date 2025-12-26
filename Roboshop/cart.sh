@@ -65,8 +65,8 @@ VALIDATE $? "installing dependencies"
 cp $script_dir/cart.service /etc/systemd/system/cart.service
 VALIDATE $? "copying service"
 
-sed -i 's/<REDIS-IP-ADDRESS>/redis.practisedevops.shop/g' /etc/systemd/system/cart.service
-sed -i 's/<CATALOGUE-SERVER-IP>/catalogue.practisedevops.shop/g' /etc/systemd/system/cart.service
+# sed -i 's/<REDIS-IP-ADDRESS>/redis.practisedevops.shop/g' /etc/systemd/system/cart.service
+# sed -i 's/<CATALOGUE-SERVER-IP>/catalogue.practisedevops.shop/g' /etc/systemd/system/cart.service
 
 systemctl daemon-reload
 VALIDATE $? "daemon reload"

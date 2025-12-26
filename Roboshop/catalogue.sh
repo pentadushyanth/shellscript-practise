@@ -65,7 +65,7 @@ VALIDATE $? "installing dependencies"
 cp $script_dir/catalogue.service /etc/systemd/system/catalogue.service
 VALIDATE $? "copying service"
 
-sed -i 's/<MONGODB-SERVER-IPADDRESS>/mongodb.practisedevops.shop/g' /etc/systemd/system/catalogue.service
+# sed -i 's/<MONGODB-SERVER-IPADDRESS>/mongodb.practisedevops.shop/g' /etc/systemd/system/catalogue.service
 
 systemctl daemon-reload
 VALIDATE $? "daemon reload"

@@ -65,8 +65,8 @@ VALIDATE $? "installing dependencies"
 cp $script_dir/user.service /etc/systemd/system/user.service
 VALIDATE $? "copying service"
 
-sed -i 's/<REDIS-IP-ADDRESS>/redis.practisedevops.shop/g' /etc/systemd/system/user.service
-sed -i 's/<MONGODB-SERVER-IPADDRESS>/mongodb.practisedevops.shop/g' /etc/systemd/system/user.service
+# sed -i 's/<REDIS-IP-ADDRESS>/redis.practisedevops.shop/g' /etc/systemd/system/user.service
+# sed -i 's/<MONGODB-SERVER-IPADDRESS>/mongodb.practisedevops.shop/g' /etc/systemd/system/user.service
 
 systemctl daemon-reload
 VALIDATE $? "daemon reload"
