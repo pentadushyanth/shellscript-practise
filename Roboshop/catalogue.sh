@@ -39,7 +39,7 @@ dnf install nodejs -y &>>$LOG_FILE
 VALIDATE $? " enabled Node js"
 
 id roboshop
-if [ $? -ne 0];then
+if [ $? -ne 0 ]; then
     useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$LOG_FILE
     VALIDATE $? "creating system user"
 else 
@@ -53,7 +53,7 @@ VALIDATE $? "downloading catalogue"
 cd /app 
 VALIDATE $? "change directory"
 
-rm-rf /app/*
+rm -rf /app/*
 VALIDATE $? "removing existing code"
 
 unzip /tmp/catalogue.zip &>>$LOG_FILE
@@ -83,7 +83,7 @@ dnf install mongodb-mongosh -y &>>$LOG_FILE
 VALIDATE $? "installing mongodb"
 
 Index=$(mongosh $mongodb_host --quiet --eval "db.getMongo().getDBName().indexOf('catalogue')")
-if [ $Index -le 0]; then
+if [ $Index -le 0 ]; then
     mongosh --host $mongodb_host </app/db/master-data.js &>>$LOG_FILE
     VALIDATE $? "loading master data "
 else
