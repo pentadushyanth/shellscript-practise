@@ -54,6 +54,12 @@ VALIDATE $? "removed nginx html"
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip &>>$LOG_FILE
 VALIDATE $? "downloading catalogue"
 
+cd /usr/share/nginx/html 
+unzip /tmp/frontend.zip &>>$LOG_FILE
+VALIDATE $? "unzipping file"
+
+
+
 cp $script_dir/nginx.conf /etc/nginx/nginx.conf &>>$LOG_FILE
 VALIDATE $? "copying content"
 
