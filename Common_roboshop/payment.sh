@@ -1,8 +1,8 @@
 #!/bin/bash
 
 source ./common.sh
+server_name=payment
 check_root
-
 
 dnf install python3 gcc python3-devel -y &>>$LOG_FILE
 VALIDATE $? "Python installation"
