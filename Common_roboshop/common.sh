@@ -12,7 +12,7 @@ LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log
 Start_time=$(date +%s)
 script_dir=$PWD
 mongodb_host=mongodb.practisedevops.shop
-Mysql_Host=mysql.practisedevops.shop
+MYSQL_HOST=mysql.practisedevops.shop
 
 
 mkdir -p $LOGS_FOLDER
