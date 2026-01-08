@@ -26,28 +26,51 @@ Usage(){
     exit 1
 }
 
+## check source dir and dest directory passes pr npt
 if [ $# -lt 2 ]; then
     Usage
 fi
-
+#check source dir exist or not
 if [ ! -d $source_dir ]; then
     echo -e "$R $source_dir does not exist $N"
     exit 1
 fi
-
+#check dest dir exist or not
 if [ ! -d $dest_dir ]; then
     echo -e "$R $dest_dir does not exist $N"
     exit 1
 fi
-
-Files=$(find $source_dir -name "*.log" -type f)
+# Find the files
+Files=$(find $source_dir -name "*.log" -type f -mtime $days)
 
 if [ ! -z "${Files}" ]; then
+    ## start archieving
     echo "files found: $Files"
     Timestamp=$(date +%F-%H-%M)
     zip_File_name="$dest_dir/app-log-$Timestamp.zip"
     echo "Zipfile name: $zip_File_name"
     find $source_dir -name "*.log" -type f | zip -@  -j "$zip_File_name"
+    
+    #check archieval
+    if [ -f $zip_File_name]
+    then 
+        echo -e " Archieval....$G Success $N"
+        # Delete if success
+        while IFS= read -r filepath
+        do 
+            echo "deleting the file: $filepath"
+            rm -rf $filepath
+            echo "deleted the file: $filepath"
+        done <<< $Files
+    else
+        echo " Archieval .... $R Failure $N"
+        exit 1
+    else
+        echo -e " No files to archive .... $Y Skipping $N"
+
+
+
+
 else
     echo "No files to archive....$Y Skipping $N"
 fi
