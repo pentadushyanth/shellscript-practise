@@ -67,10 +67,7 @@ if [ ! -z "${Files}" ]; then
         exit 1
     else
         echo -e " No files to archive .... $Y Skipping $N"
-
-
-
-
+    fi
 else
     echo "No files to archive....$Y Skipping $N"
 fi
