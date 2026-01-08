@@ -52,7 +52,7 @@ if [ ! -z "${Files}" ]; then
     find $source_dir -name "*.log" -type f | zip -@  -j "$zip_File_name"
     
     #check archieval
-    if [ -f $zip_File_name]
+    if [ -f $zip_File_name ];
     then 
         echo -e " Archieval....$G Success $N"
         # Delete if success
