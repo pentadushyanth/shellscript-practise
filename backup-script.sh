@@ -40,7 +40,7 @@ if [ ! -d $dest_dir ]; then
     exit 1
 fi
 
-Files=$(find $source_dir -name "*.log" -type f -mtime +14)
+Files=$(find $source_dir -name "*.log" -type f)
 
 if [ ! -z "${Files}" ]; then
     echo "files found: $Files"
