@@ -41,7 +41,7 @@ if [ ! -d $dest_dir ]; then
     exit 1
 fi
 # Find the files
-Files=$(find $source_dir -name "*.log" -type f -mtime $days)
+Files=$(find $source_dir -name "*.log" -type f -mtime)
 
 if [ ! -z "${Files}" ]; then
     ## start archieving
