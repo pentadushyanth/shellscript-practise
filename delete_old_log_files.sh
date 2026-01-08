@@ -14,8 +14,9 @@ mkdir -p $LOGS_FOLDER
 echo "Script started executed at: $(date)" | tee -a $LOG_FILE
 
 source_dir=/home/ec2-user/app-logs
-if [! -d $source_dir ];then
+if [ ! -d $source_dir ];then
     echo -e "ERROR:Source directory does not exist"
+    exit 1
 fi
 
 File_to_delete=$(find $source_dir -name "*.log" -type f -mtime +14)
