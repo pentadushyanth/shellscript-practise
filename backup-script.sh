@@ -44,6 +44,8 @@ Files=$(find $source_dir -name "*.log" -type f -mtime +14)
 
 if[ ! -z "${Files}" ]; then
     echo "files found"
+    Timestamp=$(date +%F-%H-%M)
+    Zi-File_name="$dest_dir/app-log-$Timestamp.zip
 else
     echo "No files to archive....$Y Skipping $N"
 fi
