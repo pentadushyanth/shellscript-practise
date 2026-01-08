@@ -65,9 +65,6 @@ if [ ! -z "${Files}" ]; then
     else
         echo " Archieval .... $R Failure $N"
         exit 1
-    else
-        echo -e " No files to archive .... $Y Skipping $N"
-    fi
 else
     echo "No files to archive....$Y Skipping $N"
 fi
