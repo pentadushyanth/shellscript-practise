@@ -1,6 +1,6 @@
 #! bin/bash
 
-ami_id="ami-09c813fb71547fc4f"
+ami_id="ami-0220d79f3f480ecf5"
 sg_id="sg-055d475babe24887e"
 zone_id="Z00418011PRHOYGK0K56N"
 domain_name="practisedevops.shop"
