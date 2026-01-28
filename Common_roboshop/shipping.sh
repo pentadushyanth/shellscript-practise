@@ -4,19 +4,9 @@ source ./common.sh
 server_name=shipping
 
 check_root
-
-
-dnf install maven -y &>>$LOG_FILE
-VALIDATE $? " maven Installation"
-
+java_setup
 user_creation
 app_setup
-
-
-cd /app 
-mvn clean package &>>$LOG_FILE
-mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
-
 service_enable
 
 

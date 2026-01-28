@@ -91,6 +91,13 @@ unzip /tmp/$server_name.zip &>>$LOG_FILE
 VALIDATE $? "unzipping file" 
 }
 
+java_setup(){
+    dnf install maven -y &>>$LOG_FILE
+    VALIDATE $? " maven Installation"
+    cd /app 
+    mvn clean package &>>$LOG_FILE
+    mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
+}
 app_restart(){
 systemctl restart $server_name
 VALIDATE $? "app restarted"
