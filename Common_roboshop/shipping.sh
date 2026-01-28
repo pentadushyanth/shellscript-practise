@@ -4,9 +4,9 @@ source ./common.sh
 server_name=shipping
 
 check_root
-java_setup
 user_creation
 app_setup
+java_setup
 service_enable
 
 
