@@ -6,7 +6,7 @@ server_name=shipping
 check_root
 app_setup
 java_setup
-user_creation
+user_creation &>>$LOG_FILE
 service_enable
 
 
