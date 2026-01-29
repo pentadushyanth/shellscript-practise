@@ -8,7 +8,7 @@ Formatted_body=$(printf '%s\n' "$msg_body" | sed -e "s/'/'\\\\''/g;1s/^/'/; \$s/
 Ipaddress=$5
 to_team=$6
 
-Final_body=$(sed -e "s/to_team/$to_team/g" -e "s/alert_type/$alert_type/g" -e "s/Ipaddress/$Ipaddress/g" -e "s/message_body/$msg_body/g" template.html)
+Final_body=$(sed -e "s/to_team/$to_team/g" -e "s/alert_type/$alert_type/g" -e "s/Ipaddress/$Ipaddress/g" -e "s/message_body/$Formatted_body/g" template.html)
 
 {
 echo "To: $to_address"
