@@ -7,6 +7,13 @@ do
     usage=$(echo $line | awk '{print $6}' | cut -d "%" -f1)
     partition=$(echo $line | awk '{print $7}')
     if [ $usage -ge $disk_threshold ]; then
-        echo " High usage on $partition: $usage"
+        
+        {
+            echo "To: practisedevopsaws2025@gmail.com"
+            echo "Subject: High usage alert email"
+            echo "Content-Type: text/html"
+            echo ""
+            echo " High usage on $partition: $usage"
+        } | msmtp "practisedevopsaws2025@gmail.com"
     fi
 done <<< $disk_usage 
