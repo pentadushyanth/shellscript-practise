@@ -1,7 +1,5 @@
 #! /bin/bash
 
-
-
 disk_usage=$(df -hT | grep -v Filesystem)  #to format th e table by removing the header row
 disk_threshold=2 # in projects we will keep it as 75\
 Ipaddress= $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)

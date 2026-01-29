@@ -3,7 +3,8 @@
 to_address=$1
 subject=$2
 alert_type=$3
-msg_body=$(printf '%s\n' | sed -e "s/'/'\\\\''/g;1s/^/'/; \$s/\$/'/")
+msg_body=$4
+Formatted_body=$(printf '%s\n' "$msg_body" | sed -e "s/'/'\\\\''/g;1s/^/'/; \$s/\$/'/")
 Ipaddress=$5
 to_team=$6
 
