@@ -1,18 +1,25 @@
-#! /bin/bash
+#!/bin/bash
 
-disk_usage=$(df -hT | grep -v Filesystem)  #to format th e table by removing the header row
-disk_threshold=2 # in projects we will keep it as 75\
-Ipaddress= $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
-message=""
+DISK_USAGE=$(df -hT | grep -v Filesystem)
+DISK_THRESHOLD=2 # in project we keep it as 75
+IP_ADDRESS=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
+MESSAGE=""
+
 while IFS= read -r line
-do 
-    usage=$(echo $line | awk '{print $6}' | cut -d "%" -f1)
-    partition=$(echo $line | awk '{print $7}')
-    if [ $usage -ge $disk_threshold ]; then
-        message+="High disk usage $partition: $usage % \n" 
+do
+    USAGE=$(echo $line | awk '{print $6}' | cut -d "%" -f1)
+    PARTITION=$(echo $line | awk '{print $7}')
+    if [ $USAGE -ge $DISK_THRESHOLD ]; then
+        MESSAGE+="High Disk usage on $PARTITION: $USAGE % <br>" # escaping
     fi
-done <<< $disk_usage 
+done <<< $DISK_USAGE
 
-echo -e "Message body: $message" 
+echo -e "Message Body: $MESSAGE"
 
-sh mail.sh "practisedevopsaws2025@gmail.com" "alert email" "high disk usage" "$message" "$Ipaddress" "devops team"
+sh mail.sh "info@joindevops.com" "High Disk Usage Alert" "High Disk Usage" "$MESSAGE" "$IP_ADDRESS" "DevOps Team"
+
+# TO_ADDRESS=$1
+# SUBJECT=$2
+# ALERT_TYPE=$3
+# MESSAGE_BODY=$4
+# IP_ADDRESS=$5
